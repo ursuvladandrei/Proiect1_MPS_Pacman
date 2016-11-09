@@ -1,0 +1,15 @@
+Adelina Chelcea:
+	-finish randomly generated positions for players
+	-start the PowerPoint presentation of the project
+
+Ovidiu Popescu:
+	-finish the implementation for the score board using Stefan Stamate's previously implemented game-logic
+
+Robert Voica:
+	-finish implementing the game menu
+
+Alexandru Bottea:
+	-start writing the document regarding the techincal aspects of the project
+
+Alexandru Balosache:
+	-start writing the document regarding the usage of the game (from the user's perspective)
