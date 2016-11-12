@@ -5,13 +5,21 @@ using System;
 public class SceneGeneration : MonoBehaviour
 {
 
+    /*
+     * codu sursa
+     * pe laptop cum functioneaza
+     * o prezentare in care explicam cum ne-am organizat, lessons learned and feedback
+     * documentatie de utilizare a proiectului, nu foarte mare
+     * documentatie tehnica
+     */
+
     public Transform brick;
     public static int width = 19;
     public static int height = 27;
     public static int limit_w = (width - 1) / 2;
     public static int limit_h = (height - 1) / 2;
     bool[,] grid = new bool[height, width];
-    public static System.Random rnd = new System.Random();
+    public static System.Random rnd = new System.Random(1);
 
     public void generateStructure(int x, int y)
     {

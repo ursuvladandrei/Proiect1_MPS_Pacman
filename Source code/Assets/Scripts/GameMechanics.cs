@@ -8,7 +8,7 @@ public class GameMechanics : MonoBehaviour {
 	public bool ghost=false;
 	private float respawn_eta=0.0f;//cat mai dureaza pana i se face respawn
 	public int respawn_cooldown=5;// si cat se asteapta de obicei
-	private int score=0;
+	public int score=0;
 	//server only
 	private int ghost_id=-1;
 	private float ghost_eta = 0.0f;
@@ -22,22 +22,16 @@ public class GameMechanics : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject[] players=GameObject.FindGameObjectsWithTag ("Player");
-		// Nota -> in players fieacre gameObject apare de 2 ori
-		for (int i = 0; i < players.Length; i += 2) {
-			if (players [i].Equals (nView.gameObject)) {
-				//Debug.Log ("my id: "+i/2+" -> "+players[i].gameObject.transform.position);
-			}
-		}
 
 		if (Network.isServer && nView.isMine) {//se ocupa numai obiectul care corespunde serverului cu hotararea a cine ghost-ul la un moment dat
 
-			if (players.Length >= 4) {
+			if (players.Length >= 2) {
 				if (ghost_id == -1) {//la inceput nu e nimeni ghost, asa ca se stabileste random cine sa fie prima oara
-					ghost_id = Random.Range (0, players.Length / 2);
+					ghost_id = Random.Range (0, players.Length);
 					Debug.Log ("first ghost is: " + ghost_id);
 					ghost_eta = ghost_cooldown;
 					GameMechanics script;
-					for (int i = 0; i < players.Length; i+=2) {
+					for (int i = 0; i < players.Length; i+=1) {
 						script = players[i].GetComponent<GameMechanics> ();
 						script.ghost_id = ghost_id;
 					}
@@ -47,12 +41,12 @@ public class GameMechanics : MonoBehaviour {
 					if (ghost_eta < 0) {
 						float dist,closest_player_distance=1000;
 						int closest_player_id = -1;
-						for (int i = 0; i < players.Length; i += 2) {
-							if (i!=ghost_id*2){//------------------------vezi daca e viu cu script.respawn_eta
-								dist = Mathf.Abs (players [ghost_id*2].transform.position.x - players [i].transform.position.x) + Mathf.Abs (players [ghost_id*2].transform.position.y - players [i].transform.position.y);
+						for (int i = 0; i < players.Length; i += 1) {
+							if (i!=ghost_id){//------------------------vezi daca e viu cu script.respawn_eta
+								dist = Mathf.Abs (players [ghost_id].transform.position.x - players [i].transform.position.x) + Mathf.Abs (players [ghost_id].transform.position.y - players [i].transform.position.y);
 								if (dist < closest_player_distance) {
 									closest_player_distance = dist;
-									closest_player_id = i/2;
+									closest_player_id = i;
 								}
 							}
 						}
@@ -62,7 +56,7 @@ public class GameMechanics : MonoBehaviour {
 							Debug.Log ("new ghost is: " + ghost_id);
 							//comunica si celorlalte obiecte de pe server noul id
 							GameMechanics script;
-							for (int i = 0; i < players.Length; i+=2) {
+							for (int i = 0; i < players.Length; i+=1) {
 								script = players [i].GetComponent<GameMechanics> ();
 								script.ghost_id = ghost_id;
 							}
@@ -75,7 +69,7 @@ public class GameMechanics : MonoBehaviour {
 		//daca sunt macar 2 jucatori si s-a stabilit un ghost_id atunci spune
 		//clonei sale din fiecare instanta ca ea este noul ghost
 		//(adica trebuie sa apeleze rpc DOAR obiectul care este acum ghost)
-		if (players.Length>=4 && ghost_id!=-1 && players[ghost_id*2].Equals (nView.gameObject)){
+		if (players.Length>=2 && ghost_id!=-1 && players[ghost_id].Equals (nView.gameObject)){
 			Debug.Log ("sending shit");
 			nView.RPC ("changeGhost", RPCMode.All);
 		}
@@ -102,13 +96,14 @@ public class GameMechanics : MonoBehaviour {
 		GameMechanics script;
 		Debug.Log ("new ghost");
 		//seteaza la ceilalti playeri din instanta din care face parte ghost ca fiind false
-		for (int i = 0; i < players.Length; i += 2) {
+		for (int i = 0; i < players.Length; i += 1) {
 			script = players[i].GetComponent<GameMechanics> ();
 			script.ghost = false;
 		}
 		//si il seteaza la true pe al lui
 		ghost = true;
-	}
+        GetComponent<SpriteRenderer>().sprite = Resources.Load("/Art/ghost.png") as Sprite;
+    }
 
 	void OnCollisionEnter2D(Collision2D col){
 		
