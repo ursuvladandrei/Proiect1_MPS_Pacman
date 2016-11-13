@@ -8,9 +8,30 @@ public class Networking : MonoBehaviour {
     private const string gameName = "Dr. Jekyll or Mr. Hyde";
     private HostData[] hostList;
     public GameObject playerPrefab;
+    bool[,] grid;
+    int height, width;
 
     private void SpawnPlayer() {
-        Network.Instantiate(playerPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+        Vector3 position = generateRandomPosition();
+        Network.Instantiate(playerPrefab, position, Quaternion.identity, 0);
+    }
+
+    public Vector3 generateRandomPosition()
+    {
+        int x = (int)Random.Range(-13.0f, 13.0f);
+        int y = (int)Random.Range(-9.0f, 9.0f);
+        int xGrid = x + 13;
+        int yGrid = y + 9;
+
+        if (grid[xGrid, yGrid] == true)
+        {
+            return generateRandomPosition();
+        }
+        else
+        {
+            grid[xGrid, yGrid] = true;
+            return new Vector3(x, y, 0);
+        }
     }
 
     private void RefreshHostList() {
@@ -40,6 +61,9 @@ public class Networking : MonoBehaviour {
 
     void OnServerInitialized() {
         Debug.Log("Server Initialized");
+        grid = SceneGeneration.getGrid();
+        width = SceneGeneration.width;
+        height = SceneGeneration.height;
         SpawnPlayer();
     }
 

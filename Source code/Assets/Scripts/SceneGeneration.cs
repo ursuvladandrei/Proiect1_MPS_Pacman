@@ -18,8 +18,14 @@ public class SceneGeneration : MonoBehaviour
     public static int height = 27;
     public static int limit_w = (width - 1) / 2;
     public static int limit_h = (height - 1) / 2;
-    bool[,] grid = new bool[height, width];
+    public static bool[,] grid = new bool[height, width];
     public static System.Random rnd = new System.Random(1);
+
+    public static bool[,] getGrid()
+    {
+        return grid;
+    }
+
 
     public void generateStructure(int x, int y)
     {
