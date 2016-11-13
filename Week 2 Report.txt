@@ -1,0 +1,41 @@
+Team:
+Accomplished objectives:
+* generate static map
+* implement player movement
+* resolve collision with objects
+* set animation to player
+* set image to player
+* started working on the network module
+
+To-Do-s:
+* randomly generate the map/scene
+* progress with the networking module
+* complete the wiki for the project
+* set the logic for the multiplayer mode
+* start working on the scoreboard
+
+Each member:
+1. Andrei Codreanu
+* generate static map
+* implement player movement
+* resolve collision with objects
+* set animation to player
+* set image to player
+* started working on the network module
+2. Ovidiu Popescu
+* started working on the start scene
+3. Alexandru Bottea
+* started testing the game
+4. Alexandru Balosache
+* started testing the game
+* solved bug in the movement of the player
+5. Adelina Chelcea
+* completed the coding style document
+6. Robert Voica
+* reviewed existing code
+7. Stefan Stamate
+* learned unity basics
+8. Vlad Ursu
+* started working on the random generation of the map
+
+
