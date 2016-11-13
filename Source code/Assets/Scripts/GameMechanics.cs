@@ -4,8 +4,9 @@ using System.Collections;
 public class GameMechanics : MonoBehaviour {
 
 	public NetworkView nView;
-	[HideInInspector]
-	public bool ghost=false;
+    public GameObject pacmanSprite;
+    public GameObject ghostSprite;
+    public bool ghost=false;
 	private float respawn_eta=0.0f;//cat mai dureaza pana i se face respawn
 	public int respawn_cooldown=5;// si cat se asteapta de obicei
 	public int score=0;
@@ -21,6 +22,13 @@ public class GameMechanics : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(ghost) {
+            pacmanSprite.SetActive(false);
+            ghostSprite.SetActive(true);
+        } else {
+            pacmanSprite.SetActive(true);
+            ghostSprite.SetActive(false);
+        }
 		GameObject[] players=GameObject.FindGameObjectsWithTag ("Player");
 
 		if (Network.isServer && nView.isMine) {//se ocupa numai obiectul care corespunde serverului cu hotararea a cine ghost-ul la un moment dat
@@ -102,7 +110,6 @@ public class GameMechanics : MonoBehaviour {
 		}
 		//si il seteaza la true pe al lui
 		ghost = true;
-        GetComponent<SpriteRenderer>().sprite = Resources.Load("/Art/ghost.png") as Sprite;
     }
 
 	void OnCollisionEnter2D(Collision2D col){

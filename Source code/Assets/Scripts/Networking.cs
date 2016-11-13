@@ -8,15 +8,19 @@ public class Networking : MonoBehaviour {
     private const string gameName = "Dr. Jekyll or Mr. Hyde";
     private HostData[] hostList;
     public GameObject playerPrefab;
-    bool[,] grid;
-    int height, width;
 
-    private void SpawnPlayer() {
+    bool[,] grid;
+    int height;
+    int width;
+
+    private void SpawnPlayer()
+    {
         Vector3 position = generateRandomPosition();
         Network.Instantiate(playerPrefab, position, Quaternion.identity, 0);
     }
 
-    public Vector3 generateRandomPosition()
+
+    private Vector3 generateRandomPosition()
     {
         int x = (int)Random.Range(-13.0f, 13.0f);
         int y = (int)Random.Range(-9.0f, 9.0f);
@@ -34,6 +38,7 @@ public class Networking : MonoBehaviour {
         }
     }
 
+
     private void RefreshHostList() {
         MasterServer.RequestHostList(typeName);
     }
@@ -50,6 +55,9 @@ public class Networking : MonoBehaviour {
 
     void OnConnectedToServer() {
         Debug.Log("Server Joined");
+        grid = SceneGeneration.getGrid();
+        width = SceneGeneration.width;
+        height = SceneGeneration.height;
         SpawnPlayer();
     }
 
@@ -59,8 +67,10 @@ public class Networking : MonoBehaviour {
     //    SceneManager.LoadScene("Up");
     }
 
-    void OnServerInitialized() {
-        Debug.Log("Server Initialized");
+
+    void OnServerInitialized()
+    {
+        //      Debug.Log("Server Initialized");
         grid = SceneGeneration.getGrid();
         width = SceneGeneration.width;
         height = SceneGeneration.height;
