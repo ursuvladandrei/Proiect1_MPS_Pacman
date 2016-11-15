@@ -1,0 +1,17 @@
+Game play
+
+Step 1 : Download builts folder and run second.exe
+
+Step 2 : In the configuration window change screen resolution, graphics quality or monitor settings
+
+Step 3 : Push play button
+
+Step 4 : If you wanna be the game host select start server
+
+Step 5 : If you wanna be just a simple player no server select refresh hosts until the server name appears
+
+Step 6 : If you wanna update scene or refresh the game select reset game
+
+Step 7 : Use A, S, D, W for movement.
+
+Pay attention the ghost is dangerous and every 15 seconds the ghost is other person(can be you).
