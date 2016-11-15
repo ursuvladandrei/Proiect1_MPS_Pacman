@@ -1,0 +1,29 @@
+Team:
+Accomplished objectives:
+* set the responsibilities of each member
+* decide on a strategy
+* select a leader
+* go through a Unity tutorial
+* set the Trello environment
+* set the BitBucket environment
+
+TO-DOs:
+* create tasks on Trello
+* move the project to git
+* generate a static scene
+* generate a player
+* work on the basic connection with the server
+* implement basic movement
+
+Each member:
+Every member of the team familiariazed with the Unity environment
+1. Andrei Codreanu
+2. Ovidiu Popescu
+3. Alexandru Bottea
+4. Alexandru Balosache
+5. Adelina Chelcea
+6. Robert Voica
+7. Stefan Stamate
+8. Vlad Ursu
+
+

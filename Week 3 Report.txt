@@ -1,0 +1,37 @@
+Team:
+Accomplished objectives:
+* generate a random scene/map
+* finish the algorithm for generating random positions for the players
+* started the PowerPoint presentation of the project
+* started working on the feedback and contribution statement
+* finished the implementation for the score board
+* finish implementing the game menu
+* started writing the document regarding the technical aspects of the project
+* started writing the document that explains how to play the game
+
+TO-DOs:
+* finish the PowerPoint presentation
+* finish the feedback and contribution statement
+* finish the document regarding the technical aspects of the project
+* finish the document that explains the gameplay
+
+Each member:
+1. Andrei Codreanu
+* finished the networking part of the project
+* set animation to the ghost
+2. Ovidiu Popescu
+* finished implementing the score board
+3. Alexandru Bottea
+* started working on the technical document of the project
+4. Alexandru Balosache
+* tested the game and started working on the document that explains the gameplay
+5. Adelina Chelcea
+* finished the random generation of the players in the scene
+* started working on the final PowerPoint presentation
+6. Robert Voica
+* finished implementation of the game menu
+7. Stefan Stamate
+* finished the game logics aspects of the game
+8. Vlad Ursu
+* solved a bug in the generation of the random scene
+* finished the move to github

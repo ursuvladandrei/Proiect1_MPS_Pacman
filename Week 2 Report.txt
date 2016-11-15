@@ -7,13 +7,6 @@ Accomplished objectives:
 * set image to player
 * started working on the network module
 
-To-Do-s:
-* randomly generate the map/scene
-* progress with the networking module
-* complete the wiki for the project
-* set the logic for the multiplayer mode
-* start working on the scoreboard
-
 Each member:
 1. Andrei Codreanu
 * generate static map
@@ -37,5 +30,12 @@ Each member:
 * learned unity basics
 8. Vlad Ursu
 * started working on the random generation of the map
+
+TO-DOs:
+* randomly generate the map/scene
+* progress with the networking module
+* complete the wiki for the project
+* set the logic for the multiplayer mode
+* start working on the scoreboard
 
 
